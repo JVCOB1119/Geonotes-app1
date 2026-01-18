@@ -1,52 +1,118 @@
-# Welcome to your Expo app 👋
+# React Native: Field Notes
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+## Cel
+Stwórz podstawową aplikację mobilną w React Native (React), która wykorzystuje natywną funkcję urządzenia oraz komunikuje się z API. Aplikacja ma mieć 3–4 widoki.
 
-## Get started
+### Realizacja celu
+W ramach projektu została wykonana aplikacja mobilna w React Native przy użyciu Expo.  
+Aplikacja komunikuje się z publicznym API oraz korzysta z lokalizacji GPS. Projekt został uruchomiony i sprawdzony na emulatorze Androida.
 
-1. Install dependencies
+---
 
-   ```bash
-   npm install
-   ```
+## Zakres i wymagania funkcjonalne
 
-2. Start the app
+### Natywna funkcja (min. 1):
+wybierz i uzasadnij (np. aparat/kamera, lokalizacja GPS, wibracje/haptics, pliki/galeria).
 
-   ```bash
-   npx expo start
-   ```
+Zrealizowane rozwiązanie  
+W aplikacji została użyta lokalizacja GPS za pomocą biblioteki expo-location.  
+Użytkownik może pobrać współrzędne geograficzne urządzenia po kliknięciu przycisku.  
+Aplikacja prosi o zgodę na dostęp do lokalizacji i obsługuje sytuację, w której lokalizacja nie jest dostępna, co zdarza się na emulatorze.
 
-In the output, you'll find options to open the app in a
+---
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+### API (min. 1 endpoint):
+odczyt lub zapis danych (publiczne lub własne/mock).
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+Zrealizowane rozwiązanie  
+Aplikacja pobiera dane z publicznego API JSONPlaceholder przy użyciu funkcji fetch.
 
-## Get a fresh project
+Endpoint:  
+https://jsonplaceholder.typicode.com/posts
 
-When you're ready, run:
+Pobrane dane są wyświetlane w formie listy notatek.
 
-```bash
-npm run reset-project
-```
+---
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+### Widoki (3–4):
 
-## Learn more
+#### 1. Lista notatek
+(tytuł, data, miniaturka/znacznik lokalizacji)
 
-To learn more about developing your project with Expo, look at the following resources:
+Zrealizowane rozwiązanie  
+Widok listy notatek pobiera dane z API i wyświetla je przy użyciu komponentu FlatList.  
+Każda notatka zawiera tytuł oraz treść. Widok ten jest ekranem głównym aplikacji.
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+---
 
-## Join the community
+#### 2. Szczegóły notatki
+(opis, zdjęcie/pozycja, akcje)
 
-Join our community of developers creating universal apps.
+Zrealizowane rozwiązanie  
+Został przygotowany osobny widok szczegółów notatki, dostępny poprzez nawigację w aplikacji.  
+Widok ten może zostać dalej rozbudowany o dodatkowe informacje.
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+---
 
-Projekt wykonany w ramach zajęć z React Native.
+#### 3. Dodaj/Edytuj
+(formularz: tytuł, opis, dodaj zdjęcie lub pobierz lokalizację)
+
+Zrealizowane rozwiązanie  
+Widok „Dodaj notatkę” umożliwia pobranie lokalizacji GPS urządzenia.  
+Po kliknięciu przycisku aplikacja:
+- prosi użytkownika o zgodę na lokalizację,
+- próbuje pobrać współrzędne geograficzne,
+- wyświetla je na ekranie lub informuje o braku dostępnej lokalizacji.
+
+---
+
+#### 4. (Opcjonalnie) Ustawienia/O aplikacji
+
+Status  
+Widok opcjonalny nie był wymagany do zaliczenia zadania i nie został zaimplementowany.
+
+---
+
+### Stan
+lokalny lub prosty store; brak trwałego storage wymagany, ale dopuszczalny.
+
+Zrealizowane rozwiązanie  
+Stan aplikacji jest obsługiwany lokalnie przy użyciu hooków useState oraz useEffect.  
+Nie zastosowano trwałego zapisu danych.
+
+---
+
+### Dostępność
+podstawowe etykiety i rozmiary celów dotyku (~44–48 px).
+
+Zrealizowane rozwiązanie  
+Zastosowano standardowe komponenty React Native, takie jak Button i Text, które spełniają podstawowe wymagania dostępności.
+
+---
+
+## Testowanie lokalne (w trakcie developmentu)
+
+- Uruchom na urządzeniu/emulatorze.
+- Pokaż: dodanie notatki, użycie natywnej funkcji, wyświetlenie listy i szczegółów.
+- Pokaż komunikację z API.
+- Zweryfikuj: błędy/edge cases.
+
+### Realizacja testów
+Aplikacja była testowana na emulatorze Androida.  
+Sprawdzono:
+- poprawne uruchomienie aplikacji,
+- pobieranie danych z API,
+- działanie nawigacji między widokami,
+- pobieranie lokalizacji GPS,
+- obsługę braku dostępnej lokalizacji w emulatorze.
+
+---
+
+## Definition of Done (DoD)
+
+- [x] 3–4 kompletne widoki zgodne z opisem
+- [x] Użyta co najmniej 1 natywna funkcja
+- [x] Integracja z API
+- [x] Czytelny UI i podstawowa dostępność
+- [x] Aktualizacja README.md
+- [ ] Minimum 3 logiczne commity
