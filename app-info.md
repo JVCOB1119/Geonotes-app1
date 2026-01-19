@@ -1,5 +1,5 @@
 # App Info
-
+# - Repo: initialized
 - Nazwa projektu: geonotes
 - Technologia: RN
 - Numer indeksu: 1
